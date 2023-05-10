@@ -24,7 +24,7 @@ public class AvarageCostCalculator {
 
     private static int getTotalQuantityForItem(List<InventoryCost> inventoryCosts, String item) {
         return inventoryCosts.stream()
-                .filter(ic -> ic.getItem().equals(item))
+                .filter(inventoryCost -> inventoryCost.getItem().equals(item))
                 .mapToInt(InventoryCost::getQuantity)
                 .sum();
     }
