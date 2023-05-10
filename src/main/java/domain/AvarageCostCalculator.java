@@ -1,6 +1,7 @@
 package domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ public class AvarageCostCalculator {
                 .stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
-                        e -> e.getValue().divide(new BigDecimal(getTotalQuantityForItem(inventoryCosts, e.getKey())))
+                        e -> e.getValue().divide(new BigDecimal(getTotalQuantityForItem(inventoryCosts, e.getKey())), 2, RoundingMode.HALF_UP)
                 ));
     }
 
